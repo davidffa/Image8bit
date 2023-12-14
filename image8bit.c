@@ -494,7 +494,7 @@ Image ImageRotate(Image img) {  ///
   for (int y = 0; y < img->height; ++y) {
     for (int x = 0; x < img->width; ++x) {
       uint8 pixel = ImageGetPixel(img, x, y);
-      ImageSetPixel(new_img, y, img->height - x - 1, pixel);
+      ImageSetPixel(new_img, y, img->width - x - 1, pixel);
     }
   }
 
@@ -519,7 +519,7 @@ Image ImageMirror(Image img) {  ///
   }
 
   for (int y = 0; y < img->height; ++y) {
-    for (int x = 0; x < img->height; ++x) {
+    for (int x = 0; x < img->width; ++x) {
       uint8 pixel = ImageGetPixel(img, x, y);
       ImageSetPixel(new_img, new_img->width - x - 1, y, pixel);
     }
@@ -554,7 +554,7 @@ Image ImageCrop(Image img, int x, int y, int w, int h) {  ///
   for (int i = x; i < x + w; ++i) {
     for (int j = y; j < y + h; ++j) {
       uint8 pixel = ImageGetPixel(img, i, j);
-      ImageSetPixel(new_img, i - x, j - x, pixel);
+      ImageSetPixel(new_img, i - x, j - y, pixel);
     }
   }
 
