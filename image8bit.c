@@ -202,7 +202,7 @@ Image ImageCreate(int width, int height, uint8 maxval) {  ///
   img->width = width;
   img->height = height;
   img->maxval = maxval;
-  img->pixel = malloc(img->width * img->height * sizeof(uint8));
+  img->pixel = calloc(img->width * img->height, sizeof(uint8));
 
   if (img->pixel == NULL) {
     errCause = "Memory allocation for pixel array failed";
